@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+supabase
+python-dotenv
+pydantic-settings
+pydantic
+python-multipart
+# AI/News scraping related
+httpx
+beautifulsoup4
+openai
