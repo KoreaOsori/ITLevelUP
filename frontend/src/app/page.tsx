@@ -155,6 +155,11 @@ export default function DashboardPage() {
   const [missions, setMissions] = useState<any[]>([]);
   const [activity, setActivity] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // TIL 모달 상태
   const [showTILModal, setShowTILModal] = useState(false);
@@ -303,13 +308,19 @@ export default function DashboardPage() {
   const completedCount = currentMissions.filter(m => m.completed).length;
   const totalCount = currentMissions.length;
 
+  if (!mounted) return (
+    <div className="p-6 flex items-center justify-center min-h-[400px]">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
+    </div>
+  );
+
   return (
     <div className="p-6 space-y-6">
       {/* Top Row: Profile, Competency, Mission */}
-      <div className="grid grid-cols-12 gap-6 items-stretch">
+      <div className="grid grid-cols-3 gap-6 items-stretch">
         
-        {/* Profile Card (col-span-4) */}
-        <div className="col-span-4 flex flex-col">
+        {/* Profile Card (1/3) */}
+        <div className="col-span-1 flex flex-col">
           <div
             className="rounded-2xl p-5 flex flex-col items-center relative overflow-hidden shadow-sm border border-slate-100 flex-1 w-full h-full"
             style={{ background: `linear-gradient(135deg, #1a1744 0%, #0f0d2e 100%)` }}
@@ -366,8 +377,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Competency Analysis (col-span-4) */}
-        <div className="col-span-4 flex flex-col">
+        {/* Competency Analysis (1/3) */}
+        <div className="col-span-1 flex flex-col">
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-indigo-50 flex flex-col flex-1 h-full">
             <div className="flex items-center justify-between mb-4">
               <div>
@@ -396,8 +407,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Today's Mission (col-span-4) */}
-        <div className="col-span-4 flex flex-col">
+        {/* Today's Mission (1/3) */}
+        <div className="col-span-1 flex flex-col">
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-indigo-50 flex-1 h-full flex flex-col">
             <div className="flex items-center justify-between mb-4">
               <div>
