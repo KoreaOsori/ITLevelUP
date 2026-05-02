@@ -317,10 +317,10 @@ export default function DashboardPage() {
   return (
     <div className="p-6 space-y-6">
       {/* Top Row: Profile, Competency, Mission */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         
-        {/* Profile Card */}
-        <div className="col-span-1 flex flex-col">
+        {/* Profile Card (col-span-4) */}
+        <div className="lg:col-span-4 flex flex-col">
           <div
             className="rounded-2xl p-5 flex flex-col items-center relative overflow-hidden shadow-sm border border-slate-100 flex-1 w-full h-full"
             style={{ background: `linear-gradient(135deg, #1a1744 0%, #0f0d2e 100%)` }}
@@ -377,8 +377,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Competency Analysis */}
-        <div className="col-span-1 flex flex-col">
+        {/* Competency Analysis (col-span-4) */}
+        <div className="lg:col-span-4 flex flex-col">
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-indigo-50 flex flex-col flex-1 h-full">
             <div className="flex items-center justify-between mb-4">
               <div>
@@ -407,8 +407,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Today's Mission */}
-        <div className="col-span-1 flex flex-col">
+        {/* Today's Mission (col-span-4) */}
+        <div className="lg:col-span-4 flex flex-col">
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-indigo-50 flex-1 h-full flex flex-col">
             <div className="flex items-center justify-between mb-4">
               <div>
