@@ -296,8 +296,8 @@ export default function DashboardPage() {
     streak: 1,
     totalMissionsCompleted: 0
   };
-  const currentMissions = missions.length > 0 ? missions : [];
-  const stage = stageInfo[currentProfile.stage_index || 0];
+  const currentMissions = Array.isArray(missions) ? missions : [];
+  const stage = stageInfo[currentProfile.stage_index] || stageInfo[0];
   const xpMax = 100; // 단순화
   const xpPct = Math.round(((currentProfile.xp % xpMax) / xpMax) * 100);
   const avgCompetency = (
@@ -317,9 +317,9 @@ export default function DashboardPage() {
   return (
     <div className="p-6 space-y-6">
       {/* Top Row: Profile, Competency, Mission */}
-      <div className="grid grid-cols-3 gap-6 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
         
-        {/* Profile Card (1/3) */}
+        {/* Profile Card */}
         <div className="col-span-1 flex flex-col">
           <div
             className="rounded-2xl p-5 flex flex-col items-center relative overflow-hidden shadow-sm border border-slate-100 flex-1 w-full h-full"
@@ -377,7 +377,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Competency Analysis (1/3) */}
+        {/* Competency Analysis */}
         <div className="col-span-1 flex flex-col">
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-indigo-50 flex flex-col flex-1 h-full">
             <div className="flex items-center justify-between mb-4">
@@ -407,7 +407,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Today's Mission (1/3) */}
+        {/* Today's Mission */}
         <div className="col-span-1 flex flex-col">
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-indigo-50 flex-1 h-full flex flex-col">
             <div className="flex items-center justify-between mb-4">
